@@ -1,17 +1,17 @@
-package gormGIS_test
+package gormgis_test
 
 import (
 	"fmt"
 
+	"github.com/9ssi7/gormgis"
 	"github.com/jinzhu/gorm"
 	_ "github.com/lib/pq"
-	"github.com/nferruzzi/gormGIS"
 
 	"testing"
 )
 
 var (
-	DB gorm.DB
+	DB *gorm.DB
 )
 
 func init() {
@@ -33,7 +33,7 @@ func init() {
 }
 
 type TestPoint struct {
-	Location gormGIS.GeoPoint `sql:"type:geometry(Geometry,4326)"`
+	Location gormgis.Point `sql:"type:geometry(Geometry,4326)"`
 }
 
 func TestGeoPoint(t *testing.T) {
@@ -42,7 +42,7 @@ func TestGeoPoint(t *testing.T) {
 	}
 
 	p := TestPoint{
-		Location: gormGIS.GeoPoint{
+		Location: gormgis.Point{
 			Lat: 43.76857094631136,
 			Lng: 11.292383687705296,
 		},
